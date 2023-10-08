@@ -16,7 +16,7 @@
 	bam_nmlfile='pamm/bam/namelist.in', ! filename of bam namelist
 	aero_nmlfile='pamm/namelist.in', ! filename of aerosol profile namelist
 	aero_prof_flag=.false., ! flag to read in a profile of aerosol
-	hm_flag=.false.,	     ! switch hm process on / off
+	hm_flag=.true.,	     ! switch hm process on / off
 	wr_flag=.true.,	     ! switch warm rain process on / off
 	rm_flag=.true.,	     ! switch riming process on / off
 	mode1_ice_flag=0,           ! 0 is off; 1 is on - experimental
