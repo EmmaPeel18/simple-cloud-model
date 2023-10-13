@@ -17,6 +17,9 @@ import tempfile
 import numpy as np
 import itertools
 from subprocess import check_output
+import getpass
+username=getpass.getuser()
+
 def batchRuns():
     from runsDefine import runToDo
     from runsDefine import outputDir
@@ -33,6 +36,11 @@ def batchRuns():
     
     tmpFileObj=tempfile.NamedTemporaryFile(delete=False)
     tmpFile=tmpFileObj.name
+    
+    changeFile(inputFile,dumpFile,'/tmp/output.nc','/tmp/' + username + '/output.nc')
+    
+    if not os.path.exists('/tmp/' + username):
+        os.mkdir('/tmp/' + username)
     
     print(tmpFile)
     print(dumpFile)
@@ -51,7 +59,7 @@ def batchRuns():
 
       
         print(elements)
-        changeFile(inputFile,tmpFile,runToDo[0][0],elements[0])
+        changeFile(dumpFile,tmpFile,runToDo[0][0],elements[0])
         changeFile(tmpFile,tmpFile,runToDo[1][0],elements[1])
         changeFile(tmpFile,tmpFile,runToDo[2][0],elements[2])
         changeFile(tmpFile,tmpFile,runToDo[3][0],elements[3])
@@ -61,8 +69,9 @@ def batchRuns():
         
         
         changeFile(tmpFile,tmpFile,\
-                'outputfile = \'' + '/tmp' + '/output.nc\'',\
-                'outputfile = \'' + outputDir + '/output' + n.zfill(3) + '.nc\'')
+                'outputfile = \'' + '/tmp/' + username + '/output.nc\'',\
+                'outputfile = \'' + outputDir + '/' + username + \
+                 '/output' + n.zfill(3) + '.nc\'')
 
 
         # # string to run SCM

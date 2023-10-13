@@ -16,6 +16,8 @@ import numpy as np
 import itertools
 from netCDF4 import Dataset
 import pandas
+import getpass
+username=getpass.getuser()
 
 def factorialMethod():
     from runsDefine import runToDo
@@ -37,7 +39,7 @@ def factorialMethod():
     for elements in itertools.product(*runToDo[:loops]):
             
         n=str(k)
-        fileName=outputDir + '/output' + n.zfill(3) + '.nc'
+        fileName=outputDir + '/' + username + '/output' + n.zfill(3) + '.nc'
         
         print('Run number '+ n.zfill(3))
 

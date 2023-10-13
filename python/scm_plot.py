@@ -41,7 +41,7 @@ def plot_model_run():
     pgon3=plt.Polygon(pgon,color='r',alpha=1)
     pgon4=plt.Polygon(pgon,color='r',alpha=1)
     
-    outputDir='/tmp/' 
+    outputDir='/tmp/' + username + '/' 
     fileName=outputDir + 'output.nc'
     
     nc=Dataset(fileName)
@@ -100,7 +100,7 @@ def plot_model_run():
     nc.close()
     #plt.show()
     
-    fig.savefig('/tmp/scm_plot.png',format='png')
+    fig.savefig('/tmp/' + username + '/scm_plot.png',format='png')
     
 if __name__=="__main__":
     plot_model_run()

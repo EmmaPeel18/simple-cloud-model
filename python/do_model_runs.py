@@ -8,6 +8,10 @@ Created on Mon Apr  6 23:20:02 2020
 import os
 import tempfile
 from subprocess import check_output
+
+import getpass
+username=getpass.getuser()
+
 def do_model_run():
     from runsDefine import outputDir
 
@@ -22,10 +26,15 @@ def do_model_run():
     print(tmpFile)
     print(dumpFile)
     
+    changeFile(inputFile,dumpFile,'/tmp/output.nc','/tmp/' + username + '/output.nc')
     
-    changeFile(inputFile,tmpFile,\
-            'outputfile = \'' + '/tmp' + '/output.nc\'',\
-            'outputfile = \'' + outputDir + '/output.nc\'')
+    if not os.path.exists('/tmp/' + username):
+        os.mkdir('/tmp/' + username)
+    
+    changeFile(dumpFile,tmpFile,\
+            'outputfile = \'' + '/tmp/' + username + '/output.nc\'',\
+            'outputfile = \'' + outputDir + '/' + username + \
+             '/output.nc\'')
     
     str1='./main.exe ' + tmpFile
     
