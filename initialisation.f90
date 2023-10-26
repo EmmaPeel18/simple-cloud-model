@@ -252,10 +252,19 @@
 		t(istore2:kp+o_halo)=theta1*(p(istore2:kp+o_halo)/1.e5_wp)**(ra/cp)
 
 		! initialise ice crystals
-		if(ice_init .and. (microphysics_flag .eq. 1)) then
+		if(ice_init .and. (microphysics_flag.eq.1)) then
             where(t(istore:istore2).lt.ttr)
                 q(istore:istore2,iqi)=num_ice*mass_ice
                 q(istore:istore2,ini)=num_ice
+            end where
+        endif
+		if(ice_init .and. (microphysics_flag.eq.3)) then
+            where(t(istore:istore2).lt.ttr)
+                q(istore:istore2,iqi)=num_ice*mass_ice
+                q(istore:istore2,ini)=num_ice
+                q(istore:istore2,ini+2)=num_ice
+                q(istore:istore2,ini+4)=num_ice
+                q(istore:istore2,ini+3)=num_ice*mass_ice/920._wp
             end where
         endif
 		
