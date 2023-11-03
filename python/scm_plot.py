@@ -49,6 +49,10 @@ def plot_model_run():
     time=nc['time'][:]
     z=nc['z'][:]
     q=nc['q'][:,:,:]
+    temp=nc['t'][:]
+    theta=nc['theta'][:]
+    p1=nc['p'][:]
+    temp=theta*(p1/100000.)**(287/1005)
     
     m1=np.max(q[0,:,14]/1.e6)
     #plt.ion()
@@ -74,6 +78,7 @@ def plot_model_run():
     
     ax=plt.subplot(223)
     plt.pcolor(time/60,z/1000.,q[:,:,23].T*1000.,shading='auto')
+#     plt.clim((0,0.1))
     plt.xlabel('time (mins)')
     plt.ylabel('z (km)')
     plt.text(0.1,0.9,'(c) $q_r$',color='white',transform=ax.transAxes)
@@ -81,21 +86,30 @@ def plot_model_run():
     cbar.set_label('mass of rain drops (g kg$^{-1}$)')
     #ax.add_patch(pgon3)
     
-    ax=plt.subplot(224)
-    plt.pcolor(time/60,z/1000.,q[:,:,30].T/1000.,shading='auto')
-    plt.xlabel('time (mins)')
-    plt.ylabel('z k(m)')
-    plt.text(0.1,0.9,'(d) $N_{ice}$',color='white',transform=ax.transAxes)
-    cbar=plt.colorbar()
-    cbar.set_label('number of ice crystals (L$^{-1}$)')
+    (r,c,p)=np.shape(q)
+    if(p>30):
+        ax=plt.subplot(224)
+        plt.pcolor(time/60,z/1000.,q[:,:,30].T/1000.,shading='auto')
+        plt.xlabel('time (mins)')
+        plt.ylabel('z k(m)')
+        plt.text(0.1,0.9,'(d) $N_{ice}$',color='white',transform=ax.transAxes)
+        cbar=plt.colorbar()
+        plt.contour(time/60,z/1000.,temp.T,[268.15,273.15],colors='m')
+    #     plt.clim((0,1000))
+        cbar.set_label('number of ice crystals (L$^{-1}$)')
     #ax.add_patch(pgon4)
     
+
     
 #     fig2=plt.figure()
-#     plt.plot(time/60,np.sum(nc['precip'][:,0,0:2],axis=1))
+#     plt.plot(time/60,np.cumsum(nc['precip'][:,0,0],axis=0)*10/3600.)
 #     plt.xlabel('time (mins)')
 #     plt.ylabel('Precipitation (mm hr$^{-1}$)')
-    
+#     plt.ylabel('Acc. Precipitation (mm)')
+#     
+#     fig2.savefig('/tmp/' + username + '/scm_plot2.png',format='png')
+
+
     
     nc.close()
     #plt.show()

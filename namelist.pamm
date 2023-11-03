@@ -30,7 +30,7 @@
 	num_ice=1.,      ! number conc of primary ice crystals /kg
 	mass_ice=1.e-14,    ! mass of new ice crystal
 	updraft_type=1,
-	t_thresh=6000.0,
+	t_thresh=1000.0,
 	t_thresh2=200.0,
 	w_peak=0.0/
  &run_vars2
