@@ -147,6 +147,7 @@
 		z1=0._wp
 		p2=1.e5_wp*(t_cbase/theta_surf)**(cp/ra)
 		htry=-1.e-3_wp !p2-psurf
+		hmin=1.e-2_wp
 		eps2=1.e-5_wp
 		call vode_integrate(z1,p1,p2,eps2,htry,hmin,hydrostatic1)
 		p1=p2
