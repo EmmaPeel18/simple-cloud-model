@@ -1,7 +1,7 @@
  &run_vars
 	outputfile = '/tmp/output.nc',
 	runtime=7200.,
-	kp=100,
+	kp=150,
 	dz=100.,
 	dt=10.,
 	nq=5, ! number of q variables
@@ -25,7 +25,7 @@
 	heyms_west=.true.,          ! flag for new fall-speeds
 	theta_flag=.true.,  ! advect theta
 	drop_num_init=.true., ! only works for microphysics_flag=2
-	num_drop=1000.e6, ! initial number concentration of drops
+	num_drop=725212852.31697679, ! initial number concentration of drops
 	ice_init=.false.,  ! only works for microphysics_flag=1
 	num_ice=1.,      ! number conc of primary ice crystals /kg
 	mass_ice=1.e-14,    ! mass of new ice crystal
