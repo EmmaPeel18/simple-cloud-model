@@ -18,7 +18,7 @@ if set1==1:
     columns1=['t','aer','hm','rm','m1','m2']
 
 elif set1==2:
-    runToDo = [['num_drop=700.e6','num_drop=200.e6'], \
+    runToDo = [['num_drop=725212852.31697679','num_drop=200.e6'], \
                ['rm_flag=.true.','rm_flag=.false.'], \
                ['hm_flag=.true.','hm_flag=.false.'], \
                ['mode1_ice_flag=0','mode1_ice_flag=1'], \

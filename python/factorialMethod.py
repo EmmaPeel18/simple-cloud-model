@@ -39,7 +39,7 @@ def factorialMethod():
     # https://stackoverflow.com/questions/23427181/all-combinations-with-multiple-loops
     loops = c**r
     arrayStore=np.zeros((loops,r),dtype='int')
-    precipStore=np.zeros((loops,1))
+    precipStore=np.zeros(loops)
     for elements in itertools.product(*runToDo[:loops]):
             
         n=str(k)
@@ -59,7 +59,7 @@ def factorialMethod():
         # read the file and store precipitation
         nc=Dataset(fileName)
         print(np.shape(nc['precip']))
-        precipStore[k,0]=np.cumsum(np.sum(nc['precip'][:,0,0:2],axis=1))[-1]*10./3600.
+        precipStore[k]=np.cumsum(np.sum(nc['precip'][:,0,0:2],axis=1))[-1]*10./3600.
         nc.close()
         k += 1
     
