@@ -55,11 +55,11 @@ def plot_model_run():
     p1=nc['p'][:]
     temp=theta*(p1/100000.)**(287/1005)
     
-    m1=np.max(q[0,:,20]/1.e6)
+    m1=np.max(q[0,:,14]/1.e6)
     #plt.ion()
     fig=plt.figure(figsize=(12,6))     
     ax=plt.subplot(221)
-    plt.pcolormesh(time/60,z/1000.,q[:,:,20].T/1.e6)
+    plt.pcolormesh(time/60,z/1000.,q[:,:,14].T/1.e6)
     plt.xlabel('time (mins)')
     plt.ylabel('z (km)')
     plt.clim((0,m1))
@@ -69,7 +69,7 @@ def plot_model_run():
     #ax.add_patch(pgon1)
     
     ax=plt.subplot(222)
-    plt.pcolormesh(time/60,z/1000.,q[:,:,21].T*1000.)
+    plt.pcolormesh(time/60,z/1000.,q[:,:,15].T*1000.)
     plt.xlabel('time (mins)')
     plt.ylabel('z (km)')
     plt.text(0.1,0.9,'(b) $q_c$',color='white',transform=ax.transAxes)
@@ -78,7 +78,7 @@ def plot_model_run():
     #ax.add_patch(pgon2)
     
     ax=plt.subplot(223)
-    plt.pcolormesh(time/60,z/1000.,q[:,:,32].T*1000.)
+    plt.pcolormesh(time/60,z/1000.,q[:,:,23].T*1000.)
 #     plt.clim((0,0.1))
     plt.xlabel('time (mins)')
     plt.ylabel('z (km)')
@@ -90,7 +90,7 @@ def plot_model_run():
     (r,c,p)=np.shape(q)
     if(p>30):
         ax=plt.subplot(224)
-        plt.pcolormesh(time/60,z/1000.,q[:,:,42].T/1000.,norm=matplotlib.colors.LogNorm())
+        plt.pcolormesh(time/60,z/1000.,q[:,:,30].T/1000.,norm=matplotlib.colors.LogNorm())
         plt.xlabel('time (mins)')
         plt.ylabel('z k(m)')
         plt.text(0.1,0.9,'(d) $N_{ice}$',color='white',transform=ax.transAxes)

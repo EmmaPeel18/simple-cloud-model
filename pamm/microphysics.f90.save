@@ -1,4 +1,4 @@
-	!> @mainpage
+!> @mainpage
 	!>@author
 	!>Paul J. Connolly, The University of Manchester
 	!>@copyright 2018
@@ -3351,39 +3351,13 @@
 		real(wp), intent(in) :: t,naer05,num_ice
 		real(wp) :: demott_2010
 		real(wp) :: tc
-		logical :: dcmex_flag = .true. ! set to .false. if you want demott_2010
-		logical :: orig_flag = .false. ! set dcmex_flag to .false. and orig_flag to .true. to do the original INP
-		real(wp) :: log_ns, ns, adust, ninp1, ninp2
 		tc=ttr-t
+		! equation 1 from
+		! https://www.pnas.org/content/107/25/11217
+		! number per std m^3
+		demott_2010=num_ice*0.0594_wp*(tc)**3.33_wp * &
+		    (naer05/1.e6_wp)**(0.0264_wp*tc+0.0033_wp)
 		
-		if (dcmex_flag) then
-			if(tc < -4._wp) then
-				log_ns = -3.25_wp + (-0.793_wp*tc) + &
-					(-6.91e-2_wp*tc**2) + (-4.17e-3_wp*tc**3) + &
-					(-1.05e-4_wp*tc**4) + (-9.08e-7_wp*tc**5)
-				ns = (10.0**log_ns)*1e4_wp
-				
-				adust=7.5_wp ! micrometers^2 per cm^-3
-				adust = adust*1e6_wp ! micrometers ^2 m^-3
-				adust = adust/(1e12_wp) ! m^2 m^-3
-				ninp1 = adust*0.05*ns
-				
-				ninp2 =1000._wp*exp(-50.0_wp+45.25_wp*(-4._wp-tc)**0.046)
-
-				demott_2010=(ninp1+ninp2)*num_ice
-			else
-				demott_2010 = 0.0_wp
-			endif
-		else
-			! equation 1 from
-			! https://www.pnas.org/content/107/25/11217
-			! number per std m^3
-			demott_2010=num_ice*0.0594_wp*(tc)**3.33_wp * &
-			    (naer05/1.e6_wp)**(0.0264_wp*tc+0.0033_wp)
-			if (orig_flag) then
-				demott_2010 = min(demott_2010,naer05)			
-			endif
-		endif		
 	end function demott_2010
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 

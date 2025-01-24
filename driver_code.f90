@@ -57,7 +57,7 @@
                                advection_scheme, monotone, &
                                microphysics_flag,ice_flag,hm_flag,&
                                wr_flag, rm_flag, mode1_ice_flag, mode2_ice_flag, &
-				               coll_breakup_flag1, heyms_west, theta_flag, mass_ice)
+				               coll_breakup_flag1, heyms_west, theta_flag, mass_ice, num_ice)
 
     use numerics_type
     use advection
@@ -84,7 +84,7 @@
     integer(i4b), intent(in) :: microphysics_flag, mode1_ice_flag,mode2_ice_flag, &
 				    coll_breakup_flag1
 				    
-    real(wp), intent(in) :: mass_ice
+    real(wp), intent(in) :: mass_ice, num_ice
 
     ! local variables
     integer(i4b) :: nt, i, j, nsteps, iter
@@ -222,7 +222,7 @@
 				z,theta_ref,rhoa,rho,u,micro_init,hm_flag,mass_ice,ice_flag,&
 				wr_flag,rm_flag, theta_flag, &
 				0.0_wp,1,mode1_ice_flag,mode2_ice_flag, &
-				    coll_breakup_flag1, heyms_west, .false.,.true.)
+				    coll_breakup_flag1, heyms_west, .false.,.true.,num_ice)
 			! calculate precipitation diagnostics
 		endif       
 

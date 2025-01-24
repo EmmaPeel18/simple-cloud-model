@@ -155,7 +155,7 @@
                             monotone,microphysics_flag,ice_flag,hm_flag,&
                             wr_flag, rm_flag, mode1_ice_flag, mode2_ice_flag, &
 				            coll_breakup_flag1, heyms_west, theta_flag, &
-                            mass_ice)
+                            mass_ice, num_ice)
         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 		print *,'SCM has finished'

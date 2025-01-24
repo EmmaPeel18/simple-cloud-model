@@ -8,9 +8,9 @@ else
 fi
 
 
-
-mkdir /tmp/${USER}
+mkdir -p /tmp/${USER} # -p ignores error if folder alreay exists
 ./main.exe namelist.tmp
+
 rm namelist.tmp 
 
 

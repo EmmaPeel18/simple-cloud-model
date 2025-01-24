@@ -8,14 +8,17 @@ Created on Mon Apr 20 10:27:20 2020
 set1=1
 if set1==1:
     runToDo = [['t_ctop=220.','t_ctop=240.'], \
-               [['bam_nmlfile=\'pamm/bam/namelist.in\'','num_drop=1006476818.2386227'],\
+               [['bam_nmlfile=\'pamm/bam/namelist.in\'','num_drop=1006476818.23862271006476818.2386227'],\
                     ['bam_nmlfile=\'python/namelists/namelist.bam.change.in\'','num_drop=817145878.67251050']], \
- 	       ['num_ice=100.','num_ice=1000.']
-               ]
-    columns1=['t','aer','num_ice']
+               ['hm_flag=.true.','hm_flag=.false.'], \
+               ['rm_flag=.true.','rm_flag=.false.'], \
+               ['mode1_ice_flag=0','mode1_ice_flag=1'], \
+               ['mode2_ice_flag=0','mode2_ice_flag=1'], \
+                   ]
+    columns1=['t','aer','hm','rm','m1','m2']
 
 elif set1==2:
-    runToDo = [['num_drop=1006476818.2386227','num_drop=200.e6'], \
+    runToDo = [['num_drop=725212852.31697679','num_drop=200.e6'], \
                ['rm_flag=.true.','rm_flag=.false.'], \
                ['hm_flag=.true.','hm_flag=.false.'], \
                ['mode1_ice_flag=0','mode1_ice_flag=1'], \
