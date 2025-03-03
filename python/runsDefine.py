@@ -7,10 +7,10 @@ Created on Mon Apr 20 10:27:20 2020
 """
 set1=1
 if set1==1:
-    runToDo = [['t_ctop=220.','t_ctop=240.'], \
+    runToDo = [['t_ctop=220.','t_ctop=260.'], \
                [['bam_nmlfile=\'pamm/bam/namelist.in\'','num_drop=1006476818.2386227'],\
                     ['bam_nmlfile=\'python/namelists/namelist.bam.change.in\'','num_drop=817145878.67251050']], \
- 	       ['num_ice=1.','num_ice=100.']
+ 	       ['num_ice=1.','num_ice=10.']
                ]
     columns1=['t','aer','num_ice']
 
