@@ -43,8 +43,8 @@ def plot_model_run(fileName1):
     
     
 if __name__=="__main__":
-    fileNames=['output000.nc','output001.nc','output002.nc','output003.nc','output004.nc','output005.nc','output006.nc','output007.nc']
-    leg1=['no GCS 000 dp','GCS 001 dp','no GCS 002 dc','GCS 003 dc','no GCS 004 sp','GCS 005 sp','no GCS 006 sc','GCS 007 sc']
+    fileNames=['output006.nc','output007.nc','output004.nc','output005.nc','output002.nc','output003.nc','output000.nc','output000.nc','output001.nc']
+    leg1=['shallow, clean','shallow, clean, GCS','shallow, polluted','shallow, polluted, GCS','deep, clean','deep, clean, GCS','deep, polluted','deep, polluted, GCS']
     fig=plt.figure()
     for i in range(len(fileNames)):
         plot_model_run(fileNames[i])
