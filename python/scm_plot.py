@@ -67,7 +67,7 @@ def plot_model_run():
     cbar=plt.colorbar(ticks=np.arange(0, 1002, 200)) #markers every 200 added in (take out to go back)
     plt.text(0.1,0.9,'(a) CDNC',color='white',transform=ax.transAxes)
     #cbar=plt.colorbar() add this back in to go back to original. 
-    cbar.set_label('number of cloud drops (cm$^{-3}$)')
+    cbar.set_label('concentration cloud drops (cm$^{-3}$)')
     #ax.add_patch(pgon1)
     
     ax=plt.subplot(222)
@@ -77,7 +77,7 @@ def plot_model_run():
     plt.clim((0, 4.0)) #set range 0-4.0, take out for original
     plt.text(0.1,0.9,'(b) $q_c$',color='white',transform=ax.transAxes)
     cbar=plt.colorbar(ticks=np.arange(0, 4.1, 0.5)) #markers every 0.5, just cbar=plt.colorbar() for original
-    cbar.set_label('mass of cloud drops (g kg$^{-1}$)')
+    cbar.set_label('mass cloud drops (g kg$^{-1}$)')
     #ax.add_patch(pgon2)
     
     ax=plt.subplot(223)
@@ -85,9 +85,9 @@ def plot_model_run():
     plt.xlabel('time (mins)')
     plt.ylabel('z (km)')
     plt.clim((0, 4.0)) #set range from 0 to 4.0
-    plt.text(0.1,0.9,'(c) $q_r$',color='white',transform=ax.transAxes)
+    plt.text(0.1,0.9,'(c) $q_h$',color='white',transform=ax.transAxes)
     cbar=plt.colorbar(ticks=np.arange(0, 4.1, 0.5)) #markers every 0.5
-    cbar.set_label('mass of rain drops (g kg$^{-1}$)')
+    cbar.set_label('mass hydrometeors (g kg$^{-1}$)')
     #ax.add_patch(pgon3)
     
     (r,c,p)=np.shape(q)
@@ -97,7 +97,7 @@ def plot_model_run():
         plt.pcolormesh(time/60,z/1000.,q[:,:,42].T/1000., norm=norm) # changed for nice
         plt.xlabel('time (mins)')
         plt.ylabel('z k(m)')
-        plt.text(0.1,0.9,'(d) $N_{ice}$',color='white',transform=ax.transAxes)
+        plt.text(0.1,0.9,'(d) $N_{ice}$',color='black',transform=ax.transAxes)
         cbar=plt.colorbar(ticks=[1e-10, 1e-8, 1e-6, 1e-4, 1e-2, 1e0, 1e2, 1e4, 1e6]) #log scale markers, remove for original
         plt.contour(time/60,z/1000.,temp.T,[268.15,273.15],colors='m')
         cbar.set_label('number of ice crystals (L$^{-1}$)')
